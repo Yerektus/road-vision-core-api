@@ -2,9 +2,11 @@ from fastapi import FastAPI
 import uvicorn
 
 from modules.auth.presenter.auth_controller import auth_router
+from modules.users.presenter.users_controller import users_router
 
 app = FastAPI()
 app.include_router(auth_router)
+app.include_router(users_router)
 
 
 @app.get("/")
