@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-import uvicorn
 
 from src.modules.auth.presenter.auth_controller import auth_router
 from src.modules.users.presenter.users_controller import users_router
