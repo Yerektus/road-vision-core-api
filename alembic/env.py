@@ -19,6 +19,7 @@ if config.config_file_name is not None:
 # add your model's MetaData object here
 # for 'autogenerate' support
 from src.common.models.base import Base
+from src.common.models.user import User
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
@@ -26,7 +27,7 @@ target_metadata = Base.metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 from src.config.config import settings
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL())
+config.set_main_option("sqlalchemy.url", settings.database_url())
 
 
 def run_migrations_offline() -> None:
