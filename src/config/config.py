@@ -1,21 +1,27 @@
-from pydantic_settings import BaseSettings
+from pathlib import Path
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field
 
+BASE_DIR = Path(__file__).parent.parent.parent
+ENV_DIR = BASE_DIR / ".env"
 
 class Settings(BaseSettings):
-    DB_ECHO: bool
+    db_echo: bool = Field(env="DB_ECHO")
 
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str
-    POSTGRES_HOST: str
-    POSTGRES_PORT: str
-    POSTGRES_DB: str
+    postgres_user: str = Field(env="POSTGRES_USER")
+    postgres_password: str = Field(env="POSTGRES_PASSWORD")
+    postgres_host: str = Field(env="POSTGRES_HOST")
+    postgres_port: str = Field(env="POSTGRES_PORT")
+    postgres_db: str = Field(env="POSTGRES_DB")
 
-    def DATABASE_URL(self) -> str:
-        return f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
+    def database_url(self) -> str:
+        return f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password}@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
     
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+    model_config = SettingsConfigDict(
+        env_file=ENV_DIR,
+        env_file_encoding="utf-8", 
+    )
 
 
 settings = Settings()
+print(settings.database_url())

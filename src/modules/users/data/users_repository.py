@@ -1,8 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.engine import Result
-from common.models.user import User
+from src.common.models.user import User
 from sqlalchemy.ext.asyncio import AsyncSession
-from modules.users.dto.user_dto import CreateUserDto
+from src.modules.users.dto.user_dto import CreateUserDto
 
 
 async def get_users(session: AsyncSession) -> list[User]:

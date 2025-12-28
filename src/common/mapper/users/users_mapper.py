@@ -1,5 +1,5 @@
-from common.models.user import User
-from modules.users.dto.user_dto import UserDto
+from src.common.models.user import User
+from src.modules.users.dto.user_dto import UserDto
 
 
 def map_user_model_to_dto(user_model: User) -> UserDto:
