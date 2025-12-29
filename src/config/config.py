@@ -5,6 +5,11 @@ from pydantic import Field
 BASE_DIR = Path(__file__).parent.parent.parent
 ENV_DIR = BASE_DIR / ".env"
 
+
+class AccessTokenSettings(BaseSettings):
+    access_token_expire: int = Field(env="ACCESS_TOKEN_EXPIRE", default=60*60) 
+
+
 class Settings(BaseSettings):
     db_echo: bool = Field(env="DB_ECHO")
 
@@ -13,6 +18,8 @@ class Settings(BaseSettings):
     postgres_host: str = Field(env="POSTGRES_HOST")
     postgres_port: str = Field(env="POSTGRES_PORT")
     postgres_db: str = Field(env="POSTGRES_DB")
+
+    access_toeken_settings: AccessTokenSettings = AccessTokenSettings()
 
     def database_url(self) -> str:
         return f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password}@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
