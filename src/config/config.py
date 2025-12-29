@@ -7,7 +7,7 @@ ENV_DIR = BASE_DIR / ".env"
 
 
 class AccessTokenSettings(BaseSettings):
-    access_token_expire: int = Field(env="ACCESS_TOKEN_EXPIRE", default=60*60) 
+    access_token_expire: int = Field(env="ACCESS_TOKEN_EXPIRE", default=60 * 60)
     reset_password_token_secret: str = Field(env="RESET_PASSWORD_TOKEN_SECRET")
     verification_token_secret: str = Field(env="VERIFICATION_TOKEN_SECRET")
 
@@ -25,10 +25,10 @@ class Settings(BaseSettings):
 
     def database_url(self) -> str:
         return f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password}@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
-    
+
     model_config = SettingsConfigDict(
         env_file=ENV_DIR,
-        env_file_encoding="utf-8", 
+        env_file_encoding="utf-8",
         env_nested_delimiter="__",
         env_prefix="APP_CONFIG__",
     )

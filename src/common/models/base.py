@@ -10,11 +10,8 @@ class Base(DeclarativeBase):
 
     id: Mapped[str] = mapped_column(UUID, primary_key=True, default=uuid.uuid4)
 
-    created_at: Mapped[datetime] = mapped_column(
-        insert_default=func.now()
-    )
+    created_at: Mapped[datetime] = mapped_column(insert_default=func.now())
 
     updated_at: Mapped[datetime] = mapped_column(
-        insert_default=func.now(),
-        onupdate=func.now()
+        insert_default=func.now(), onupdate=func.now()
     )

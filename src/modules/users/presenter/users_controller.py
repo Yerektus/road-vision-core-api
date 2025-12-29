@@ -7,7 +7,9 @@ users_router = APIRouter(prefix="/api/v1/users")
 
 
 @users_router.get("/")
-async def get_users(session: AsyncSession = Depends(db_helper.scoped_session_depedency)):
+async def get_users(
+    session: AsyncSession = Depends(db_helper.scoped_session_depedency),
+):
     return await users_service.get_users(session=session)
 
 
