@@ -29,6 +29,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=ENV_DIR,
         env_file_encoding="utf-8", 
+        env_nested_delimiter="__",
+        env_prefix="APP_CONFIG__",
     )
 
 
