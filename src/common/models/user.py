@@ -14,8 +14,6 @@ class User(Base, SQLAlchemyBaseUserTableUUID):
     __tablename__ = "users"
 
     username: Mapped[str] = mapped_column(String(255), unique=True)
-    email: Mapped[str] = mapped_column(String(255), unique=True)
-    password: Mapped[str] = mapped_column(String(255))
 
     @classmethod
     def get_db(cls, session: AsyncSession):
