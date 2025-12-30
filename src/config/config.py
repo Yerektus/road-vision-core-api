@@ -1,12 +1,12 @@
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field
+from pydantic import Field, BaseModel
 
 BASE_DIR = Path(__file__).parent.parent.parent
 ENV_DIR = BASE_DIR / ".env"
 
 
-class AccessTokenSettings(BaseSettings):
+class AccessTokenSettings(BaseModel):
     access_token_expire: int = Field(env="ACCESS_TOKEN_EXPIRE", default=60 * 60)
     reset_password_token_secret: str = Field(env="RESET_PASSWORD_TOKEN_SECRET")
     verification_token_secret: str = Field(env="VERIFICATION_TOKEN_SECRET")
@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     postgres_port: str = Field(env="POSTGRES_PORT")
     postgres_db: str = Field(env="POSTGRES_DB")
 
-    access_token_settings: AccessTokenSettings = AccessTokenSettings()
+    access_token_settings: AccessTokenSettings = Field(env="ACCESS_TOKEN_SETTINGS", default_factory=AccessTokenSettings)
 
     def database_url(self) -> str:
         return f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password}@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
