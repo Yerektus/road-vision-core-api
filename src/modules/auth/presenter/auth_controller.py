@@ -16,3 +16,7 @@ auth_router.include_router(
 auth_router.include_router(
     router=fastapi_users.get_verify_router(UserRead),
 )
+
+auth_router.include_router(
+    router=fastapi_users.get_reset_password_router(),
+)
