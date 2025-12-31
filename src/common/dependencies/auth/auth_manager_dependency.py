@@ -1,5 +1,5 @@
 from fastapi import Depends
-from src.modules.auth.manager.auth_manager import AuthManager
+from src.common.dependencies.auth.auth_manager import AuthManager
 from src.common.dependencies.auth.users_dependency import get_users_db
 
 
