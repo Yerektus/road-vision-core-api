@@ -5,4 +5,4 @@ class RoadType(Enum):
     Cracks = "cracks"
     Pits = "pits"
     Without_Asphalt = "without_asphalt"
-    Indefined = "undefined"
+    Undefined = "undefined"
