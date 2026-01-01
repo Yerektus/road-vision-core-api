@@ -10,3 +10,22 @@
 - Alembic
 - FastAPIUsers
 - Docker
+
+## Установка
+
+1. Клонирование репозитории
+```
+git clone https://github.com/Feesder/road-vision-core-api.git
+cd road-vision-core-api
+```
+
+2. Настройка конфигурации
+Создайте конфигурационный файл на основе шаблона и укажите параметры:
+```
+cp ./.env.example ./.env
+```
+
+3. Запуск приложения
+```
+docker compose up
+```
