@@ -32,7 +32,9 @@ class Settings(BaseSettings):
     postgres_port: str = Field(env="POSTGRES_PORT")
     postgres_db: str = Field(env="POSTGRES_DB")
 
-    access_token_settings: AccessTokenSettings = Field(env="ACCESS_TOKEN_SETTINGS", default_factory=AccessTokenSettings)
+    access_token_settings: AccessTokenSettings = Field(
+        env="ACCESS_TOKEN_SETTINGS", default_factory=AccessTokenSettings
+    )
 
     api_prefix: ApiPrefix = ApiPrefix()
 

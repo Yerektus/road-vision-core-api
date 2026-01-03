@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class RoadType(Enum):
     Unscathed = "unscathed"
     Cracks = "cracks"

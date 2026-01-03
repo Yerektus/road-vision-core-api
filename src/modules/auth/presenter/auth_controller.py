@@ -6,7 +6,9 @@ from src.modules.auth.presenter.schemas.user_schema import UserRead, UserCreate
 auth_router = APIRouter(prefix="/api/v1/auth", tags=["auth"])
 
 auth_router.include_router(
-    router=fastapi_users.get_auth_router(authentication_backend, requires_verification=True),
+    router=fastapi_users.get_auth_router(
+        authentication_backend, requires_verification=True
+    ),
 )
 
 auth_router.include_router(
