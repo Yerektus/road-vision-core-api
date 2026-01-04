@@ -3,7 +3,10 @@ from src.modules.road_condition_features.dto.road_condition_feautre_dto import (
     RoadConditionFeatureDto,
 )
 
-def mapRoadConditionFeatureToRoadConditionFeatureDto(road_condition_features: RoadConditionFeature): 
+
+def mapRoadConditionFeatureToRoadConditionFeatureDto(
+    road_condition_features: RoadConditionFeature,
+):
     return RoadConditionFeatureDto(
         longitude=road_condition_features.longitude,
         latitude=road_condition_features.latitude,
